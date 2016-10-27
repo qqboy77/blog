@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+
+  </head>
+  <body>
+   <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+       <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/">Microblog</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="active"><a href="/"> 首页</a></li> 
+            <li><a href="/login">登录</a></li>
+            <li><a href="/reg"> 注册</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="hero-unit">
+        <h1><%= h1title %></h1>
+        <p>Microblog一个Node.js </p>
+        <p>
+          <a class="btn btn-primary btn-large" href="/login">登录</a>
+          <a class="btn btn-large" href="/reg">   立即注册 </a>
+        </p>
+    </div>
+
+    <div class="row">
+      <div class="span4">
+        <h2>Carbo  </h2>
+          <p>122122</p>
+        </div>
+      <div class="span4">
+        <h2>BYVoid  </h2>
+        <p>Open Chinese Convert OpenCC  一个中(libopencc)呃呃呃</p>
+      </div>
+      <div class="span4">
+        <h2>佛镇 说</h2>
+        <p>12121212212</p>
+      </div>
+      <div class="span4">
+         <form action="../users/data" method="post">
+          <br>First name:<br>
+          <input type="text" id="firstname" name="firstname" value="Mickey">
+            <br>Last name:<br>
+          <input type="file" id="lastname" name="lastname" value="Mouse">
+
+          <input type="text" id="data" name="data" value="111">
+          <input type="text" id="name" name="name" value="111">
+
+          <input type="button" value="Add" onclick = "displayDate()"/ >
+
+          <img  id="image" src=""/ name="image">
+          <br><br>
+          <input type="submit" value="Submit">
+        </form> 
+      </div>
+    </div>
+    <script>
+      function displayDate()
+      {
+        var upfile = document.querySelector('#lastname');
+        var data = document.querySelector('#data');
+        var name = document.querySelector('#name');
+        name.value = upfile.value;
+        // alert(upfile.value);
+        var fileReader = new FileReader();
+        fileReader.onload = function(evt)
+        {  
+          if(FileReader.DONE==fileReader.readyState)
+          {
+           var img =  document.getElementById('image');
+           var name = this.fullPath;
+            alert(name);
+            img.src = this.result; //是Base64的data url数据
+            data.value = this.result;
+            alert(img.src);
+       }
+     }
+     fileReader.readAsDataURL(upfile.files[0]);
+     // var file_upl = document.getElementById('lastname').value; 
+     // file_upl.select(); 
+     // window.parent.document.body.focus(); 
+     // path = document.selection.createRange().text; 
+     // alert(path);
+   }
+ </script>
+    <hr />
+    <footer>
+      <p><a href="http://www.byvoid.com/" target="_blank">BYVoid</a> 2012</p> 
+    </footer>
+  </body>
+</html>
+
+
