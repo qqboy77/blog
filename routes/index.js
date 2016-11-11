@@ -46,15 +46,15 @@ router.all('/sql/:userid',function(req,res,next){
 
 router.all('/sqlinsert',function(req,res,next){
   var insertdata = {id:4,
-    client:'crasher',
+    client:'youren',
     type:'ios',
-    version:'1.0.1',
-    patch_version:1};
+    version:'3.0.5',
+    patch_version:2};
     
   var user = new User();
   user.insert(insertdata,function(err,results){
     if (err) {
-      res.send(err);
+      res.send(results);
     }
     res.send(results);
   });

@@ -7,14 +7,14 @@ User.prototype.find = function(id,callback) {
 
 	db.pool.getConnection(function(err,connection){
 		if (err) {
-			callback(true,'1');
+			callback(true,err);
 			return;
 		}
 
 		connection.query(sql,[id],function(err,results){
 			if (err) {
 				console.log(err);
-				callback(true,'1');
+				callback(true,err);
 				return;
 			}
 			console.log(results);
@@ -28,14 +28,14 @@ User.prototype.insert = function(data,callback) {
 
 	db.pool.getConnection(function(err,connection){
 		if (err) {
-			callback(true,'1');
+			callback(true,err);
 			return;
 		}
 
 		connection.query(sql,[data.id,data.client,data.type,data.version,data.patch_version],function(err,results){
 			if (err) {
 				console.log(err);
-				callback(true,'1');
+				callback(true,err);
 				return;
 			}
 			console.log(results);
